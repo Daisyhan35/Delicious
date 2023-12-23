@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import '@splidejs/react-splide/css';
-import { Link } from "react-router-dom";
+import '@splidejs/react-splide/css'
 
 function Popular() {
 
@@ -29,64 +28,72 @@ const getPopular = async () => {
 
   return (
     <div>
-      <h3>Popular Picks</h3>
-      <Wrapper>
-        <Splide options={{
-          perPage: 3,
-          pagination: false,
-          drag: "free",
-          gap: "2rem",
-
-          // Responsive breakpoints
-          mediaQuery: 'max',
-          breakpoints: {
-            // When windows width is 1000
-            1000: {
-              perPage: 2,
-            },
-            //When windows width is 600
-            600: {
-              perPage: 1,
-            }
-          }
-        }}>
-        {popular.map((recipe) => {
-          return(
-            <SplideSlide key={recipe.id}>
-            <Card>
-              <Link to={"/recipe/" + recipe.id}>
-              <img src={recipe.image} alt={recipe.title}/>
-              <h4>{recipe.title}</h4>
-              
-              </Link>
-            </Card>
-            </SplideSlide>
-          );
-        })}
-        </Splide>
-      </Wrapper>
+          <Wrapper>
+            <h3>Popular Picks</h3>
+            <Splide options={{
+              perPage: 4,
+              arrows: false,
+              pagination: false,
+              drag: "free",
+              gap: "3rem",
+            }}>
+            {popular.map((recipe) => {
+              return(
+                <SplideSlide key={recipe.id}>
+                <Card>
+                  <p>{recipe.title}</p>
+                  <img src={recipe.image} alt={recipe.title}/>
+                  <Gradient />
+                </Card>
+                </SplideSlide>
+              );
+            })}
+            </Splide>
+          </Wrapper>
     </div>
   )
 }
 
 const Wrapper = styled.div`
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-grid-gap: 3rem;
+margin: 4rem 0rem;
 `;
 const Card = styled.div`
+min-height: 20rem;
+border-radius: 2rem;
+overflow: hidden;
+position: relative;
+
+
 img{
-  width: 100%;
   border-radius: 2rem;
-  height: 15rem;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fix:cover;
 }
-a {
-  text-decoration: none;
-}
-h4{
+p{
+  position: absolute;
+  z-index: 10;
+  bottom: 0%;
+  transform: translate(-50% 0%);
+  color: white;
+  width: 100%;
   text-align: center;
-  padding: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 `;
+const Gradient = styled.div`
+z-index: 3;
+position: abosolute;
+width: 100%;
+height: 100%;
+background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
+`
 
 export default Popular
