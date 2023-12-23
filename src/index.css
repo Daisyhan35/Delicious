@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  /* border: 1px solid red; */
   box-sizing: border-box;
   font-family: "Monserrat", sans-serif;
 }body {
@@ -11,7 +10,7 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 0% 15%;
+  margin: 0% 20%;
 }
 
 code {
@@ -25,7 +24,7 @@ h4 {
 }
 
 h3 {
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: rgb(56, 56, 56);
   line-height: 2.5rem;
   margin: 2rem 0rem;
