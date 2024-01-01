@@ -29,6 +29,7 @@ font-size: 1.5rem;
 font-weight: 400;
 font-family: 'Lobster Two', cursive;
 `;
+
 const Nav = styled.div`
 padding: 2rem 0rem;
 display: flex;
